@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Run It &amp; Call</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ink: #1b2a2f; --ink-soft: #435357; --paper: #f5f1e6; --paper-raised: #fffdf8;
+    --line: #d8cfb8; --gold: #b5811f; --gold-soft: #ecd9a8; --teal: #2f6f6a;
+    --teal-soft: #dcebe9; --stamp: #a5432a; --stamp-soft: #f3ddd3;
+    --shadow: 0 1px 0 rgba(27,42,47,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #ece6d6; --ink-soft: #b7ae98; --paper: #1c211f; --paper-raised: #242a27;
+      --line: #3a4340; --gold: #e0b756; --gold-soft: #3a331d; --teal: #7fc4bd;
+      --teal-soft: #1f3634; --stamp: #e08767; --stamp-soft: #3a2620;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #ece6d6; --ink-soft: #b7ae98; --paper: #1c211f; --paper-raised: #242a27;
+    --line: #3a4340; --gold: #e0b756; --gold-soft: #3a331d; --teal: #7fc4bd;
+    --teal-soft: #1f3634; --stamp: #e08767; --stamp-soft: #3a2620;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Work Sans', -apple-system, sans-serif; line-height: 1.55; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(30px, 5.5vw, 44px); font-weight: 700; margin: 6px 0 8px; text-wrap: balance; line-height: 1.08; }
+  .tagline { font-size: 16px; color: var(--ink-soft); max-width: 52ch; }
+  .perf { border: none; border-top: 2px dashed var(--line); margin: 36px 0 30px; }
+  .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  .section-no { font-family: 'IBM Plex Mono', monospace; color: var(--gold); font-weight: 600; font-size: 14px; }
+  h2 { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 600; margin: 0; }
+  p { margin: 0 0 14px; }
+  strong { color: var(--ink); }
+  .callout { background: var(--teal-soft); border-left: 3px solid var(--teal); border-radius: 4px; padding: 14px 18px; margin: 14px 0; font-size: 15px; }
+  .callout.stamp { background: var(--stamp-soft); border-color: var(--stamp); }
+  .callout.gold { background: var(--gold-soft); border-color: var(--gold); }
+  ol, ul { padding-left: 22px; }
+  ol li, ul li { margin-bottom: 8px; font-size: 15px; }
+  .fill { background: var(--gold-soft); border: 1px dashed var(--gold); border-radius: 4px; padding: 1px 7px; font-family: 'IBM Plex Mono', monospace; font-size: 0.92em; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14.5px; }
+  th { text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; padding: 8px 10px; border-bottom: 1.5px solid var(--line); }
+  td { padding: 10px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .checklist { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .checklist li { display: flex; gap: 12px; align-items: flex-start; }
+  .checklist .box { flex: none; width: 17px; height: 17px; border: 1.5px solid var(--ink-soft); border-radius: 4px; margin-top: 2px; }
+  .week { display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .week:first-child { border-top: none; }
+  .week-label { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--teal); font-weight: 600; padding-top: 2px; }
+  footer { margin-top: 44px; padding-top: 18px; border-top: 2px dashed var(--line); font-size: 13px; color: var(--ink-soft); text-align: center; }
+  @media (max-width: 560px) { .week { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Wheels for Chris &middot; Organiser's runbook</span>
+  <h1>Run It &amp; Call</h1>
+  <p class="tagline">A step-by-step guide for whoever is actually running this raffle day to day: the phone call to make before anything else, who should run it, and the four-week action list.</p>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">01</span><h2>Make the call, before a single ticket is sold</h2></div>
+    <p>Tasmania regulates raffles once real money and prizes are involved ("minor gaming"). A raffle stopped mid-run is worse for Chris than a two-day delay now, so this comes first.</p>
+    <div class="callout"><strong>Who to contact:</strong> Consumer, Building and Occupational Services (CBOS), Tasmania &mdash; they administer minor gaming (raffles, art unions, lucky envelopes) for the state. Search <strong>"CBOS Tasmania minor gaming permit"</strong> or <strong>"Tasmania raffle permit"</strong> to get their current phone number and online form &mdash; don't rely on a number written down here; it's a five-second search to get the live one. If CBOS isn't the right desk, Business Tasmania's general line can redirect you.</div>
+    <p><strong>What to ask, in this order:</strong></p>
+    <ol>
+      <li>"We want to run a community raffle, total prize value around $1,000, all prizes are donated gift cards. Do we need a minor gaming permit, or are we exempt?"</li>
+      <li>"Does it matter whether it's run by an individual versus a club, charity or community group? Chris is a private individual with cerebral palsy &mdash; does the raffle need to be run through an eligible organisation instead?"</li>
+      <li>"If we do need a permit, how long does approval take, and can we start selling tickets while it's pending?"</li>
+      <li>"Are there rules about how the draw has to be conducted, who has to witness it, or how winners have to be notified?"</li>
+      <li>"Do we need to keep a full record of ticket sales, and if so, in what form?"</li>
+    </ol>
+    <p class="callout gold"><strong>Write down, on the spot:</strong> the answer to each question, the name of who you spoke to, and the date. If a permit is required, keep the reference number with this guide.</p>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">02</span><h2>Decide who's actually running it</h2></div>
+    <ul>
+      <li>If Step 1 says an eligible organisation is needed: line one up now &mdash; a local service club, sports club, church group, or registered charity willing to auspice the raffle. Usually a quick yes once you explain it's for a well-known local man's van.</li>
+      <li>Either way, decide and write down <strong>before launch</strong>: who holds the cash day to day (one named person, one place), how the money reaches Chris at the end, and who signs off the final winner list and the total raised.</li>
+    </ul>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">03</span><h2>Line up the prizes into four packs</h2></div>
+    <p>Don't hand out the gift cards as one big pile. Group the roughly $1,000 into four named packs so the raffle has four winning moments instead of one.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Pack</th><th>Roughly</th><th>What goes in it</th></tr></thead>
+      <tbody>
+        <tr><td>The Big One</td><td>~$400</td><td>The highest-value cards, combined</td></tr>
+        <tr><td>Ulverstone Local Pack</td><td>~$300</td><td>Mid-tier cards from 3&ndash;4 different local businesses</td></tr>
+        <tr><td>Night Out Pack</td><td>~$200</td><td>Cafe / takeaway / entertainment cards</td></tr>
+        <tr><td>Early Bird Draw</td><td>~$100</td><td>One smaller card, drawn a week before the main event</td></tr>
+      </tbody>
+    </table></div>
+    <p class="tagline">Photograph each pack once assembled &mdash; Bridie needs these photos for the prize board design.</p>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">04</span><h2>Set the price and the two dates</h2></div>
+    <ul>
+      <li><strong>Ticket price:</strong> $10 single, $25 for 3, $45 for 6. Round dollars only.</li>
+      <li><strong>No cap on tickets.</strong> Sell on a rolling basis until the draw date &mdash; the prize cost is fixed, so uncapped sales maximises cash for Chris. State on every ticket that total tickets sold and odds will be posted the morning of the draw.</li>
+      <li><strong>Early bird cutoff:</strong> a date roughly 10&ndash;12 days into the campaign.</li>
+      <li><strong>Draw day:</strong> one fixed date about four weeks out, ideally at a real local event with a crowd already there &mdash; the Ulverstone market, a footy final, show day, whatever's on the calendar.</li>
+    </ul>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">05</span><h2>Four-week run sheet</h2></div>
+    <div class="week"><div class="week-label">WEEK 1</div><div><p><strong>Set up &amp; launch</strong> &mdash; permit call cleared, prize packs assembled and photographed, ticket book printed, hero post and ticket graphic live, ticket books dropped at donating businesses' counters.</p></div></div>
+    <div class="week"><div class="week-label">WEEK 2</div><div><p><strong>Push to the early bird cutoff</strong> &mdash; daily-ish posts in local Facebook groups, ask each donating business to share, announce the early bird winner the day the cutoff hits.</p></div></div>
+    <div class="week"><div class="week-label">WEEK 3</div><div><p><strong>Keep the pace up</strong> &mdash; share a running tally ("$X raised so far"), reshare the early bird winner's reaction if they'll let you, confirm the draw-day venue and who's pulling the tickets.</p></div></div>
+    <div class="week"><div class="week-label">WEEK 4</div><div><p><strong>Draw day</strong> &mdash; post total tickets sold and total raised before the draw starts, draw live on video in front of a crowd if possible, same-day thank-you post naming every donating business.</p></div></div>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">06</span><h2>Draw day checklist</h2></div>
+    <ul class="checklist">
+      <li><span class="box"></span><div>Total tickets sold counted and written down</div></li>
+      <li><span class="box"></span><div>Total raised written down</div></li>
+      <li><span class="box"></span><div>All four prize packs on hand and visible</div></li>
+      <li><span class="box"></span><div>Someone filming or photographing the draw</div></li>
+      <li><span class="box"></span><div>A second person witnessing the draw (name it &mdash; matters if a permit was required)</div></li>
+      <li><span class="box"></span><div>Winners' names and phone numbers ready to record as each ticket is pulled</div></li>
+      <li><span class="box"></span><div>Thank-you post drafted in advance, just needs the winners' names dropped in</div></li>
+    </ul>
+  </section>
+
+  <footer>Companion document: Bridie's Design Kit &mdash; the five Canva assets, copy, and the palette/fonts to keep everything looking like one campaign.</footer>
+</div>
+</body>
+</html>

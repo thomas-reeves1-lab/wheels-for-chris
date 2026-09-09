@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<title>Getting Paid, Straight to Chris</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground:#ffffff; --ground-tint:#f2f7f8; --card:#ffffff;
+    --ink:#10262e; --ink-soft:#4f6a72; --line:#dde8ea; --line-strong:#bcd2d6;
+    --deep:#0f4552; --deep-bright:#17697c; --deep-soft:#e2f1f3;
+    --action:#ef5f27; --action-soft:#fdeae1;
+    --sun:#f2a900; --sun-soft:#fdf1d6;
+    --stop:#c0392b; --stop-soft:#fbe4e1;
+    --go:#1c7a52; --go-soft:#dff2e9;
+    --shadow-sm:0 1px 2px rgba(16,38,46,0.06); --shadow-md:0 6px 20px rgba(16,38,46,0.09);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#0d1618; --ground-tint:#131f22; --card:#162226;
+      --ink:#eaf3f4; --ink-soft:#9db3b8; --line:#26363a; --line-strong:#3a5057;
+      --deep:#7fc9d8; --deep-bright:#a4dbe6; --deep-soft:#16323a;
+      --action:#ff7a45; --action-soft:#33201a; --sun:#ffc549; --sun-soft:#33290f;
+      --stop:#f08272; --stop-soft:#3a1f1b; --go:#63c79a; --go-soft:#163024;
+      --shadow-sm:0 1px 2px rgba(0,0,0,0.5); --shadow-md:0 6px 20px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#0d1618; --ground-tint:#131f22; --card:#162226;
+    --ink:#eaf3f4; --ink-soft:#9db3b8; --line:#26363a; --line-strong:#3a5057;
+    --deep:#7fc9d8; --deep-bright:#a4dbe6; --deep-soft:#16323a;
+    --action:#ff7a45; --action-soft:#33201a; --sun:#ffc549; --sun-soft:#33290f;
+    --stop:#f08272; --stop-soft:#3a1f1b; --go:#63c79a; --go-soft:#163024;
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.5); --shadow-md:0 6px 20px rgba(0,0,0,0.55);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink); font-family:'Plus Jakarta Sans',-apple-system,sans-serif; line-height:1.6; }
+  .wrap { max-width:680px; margin:0 auto; padding:40px 20px 90px; }
+  a { color: var(--deep-bright); }
+  .kicker { display:inline-flex; align-items:center; gap:7px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--deep); font-weight:600; background:var(--deep-soft); padding:6px 12px; border-radius:999px; }
+  h1 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-weight:800; font-size:clamp(32px,7.5vw,46px); line-height:1.03; letter-spacing:-0.025em; margin:14px 0 10px; text-wrap:balance; }
+  .lede { font-size:17px; color:var(--ink-soft); max-width:52ch; }
+  h2 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(23px,5.4vw,29px); font-weight:700; line-height:1.15; letter-spacing:-0.02em; margin:0 0 8px; text-wrap:balance; }
+  h3 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:18px; font-weight:700; margin:0 0 6px; }
+  p { margin:0 0 14px; }
+  section { padding:34px 0; border-top:1px solid var(--line); }
+  section:first-of-type { border-top:none; }
+  .section-no { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.13em; text-transform:uppercase; color:var(--action); font-weight:600; margin-bottom:8px; }
+
+  .rulebox { border-radius:16px; padding:22px; margin:18px 0; }
+  .rulebox.stop { background:var(--stop-soft); border-left:4px solid var(--stop); }
+  .rulebox.go { background:var(--go-soft); border-left:4px solid var(--go); }
+  .rulebox.sun { background:var(--sun-soft); border-left:4px solid var(--sun); }
+  .rulebox p:last-child, .rulebox ul:last-child { margin-bottom:0; }
+  .rulebox h3 { margin-bottom:8px; }
+
+  .option { background:var(--card); border:2px solid var(--line); border-radius:16px; padding:22px; margin:14px 0; box-shadow:var(--shadow-sm); }
+  .option.best { border-color:var(--go); box-shadow:var(--shadow-md); }
+  .opt-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+  .tag { font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:5px 10px; border-radius:999px; background:var(--go); color:var(--ground); flex:none; }
+  .tag.later { background:var(--ink-soft); }
+  .tag.no { background:var(--stop); }
+  dl.facts { display:grid; grid-template-columns:auto 1fr; gap:6px 16px; margin:14px 0 0; font-size:14.5px; }
+  dl.facts dt { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); padding-top:3px; }
+  dl.facts dd { margin:0; }
+
+  ol.steps { counter-reset:st; list-style:none; padding:0; margin:18px 0 0; }
+  ol.steps li { counter-increment:st; display:grid; grid-template-columns:30px 1fr; gap:14px; padding:11px 0; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child { border-bottom:none; }
+  ol.steps li::before { content:counter(st); font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:12.5px; color:var(--ground); background:var(--deep); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  ol.steps strong { display:block; font-size:15.5px; }
+  ol.steps span { font-size:14.5px; color:var(--ink-soft); }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:14.5px; }
+  th { text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; padding:9px 10px; border-bottom:2px solid var(--line); }
+  td { padding:11px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .table-wrap { overflow-x:auto; }
+  code { font-family:'IBM Plex Mono',monospace; font-size:0.92em; background:var(--ground-tint); padding:2px 6px; border-radius:5px; }
+  ul.plain { padding-left:20px; }
+  ul.plain li { margin-bottom:8px; }
+  footer { margin-top:34px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Wheels for Chris &middot; Money setup</div>
+  <h1>Getting paid, straight to Chris</h1>
+  <p class="lede">How to take raffle money so it lands in Chris's own bank account, stays clean if anyone asks, and does not need anybody's credit card details.</p>
+
+  <section>
+    <div class="section-no">The one rule</div>
+    <h2>The money goes to Chris. Nowhere else, not even for a minute.</h2>
+    <div class="rulebox stop">
+      <h3>Do not run it through these</h3>
+      <ul class="plain" style="margin-bottom:0;">
+        <li>An IEL account, or any business account belonging to a provider</li>
+        <li>A support worker's own bank account, even to "hold it for him"</li>
+        <li>A shared account nobody can point at afterwards</li>
+      </ul>
+    </div>
+    <p>Chris is an NDIS participant and some of the people helping are his support workers. That is fine, and it is what mates do. What turns it into a problem is money from the public sitting in a worker's or a provider's account with a participant's name on it. One straight line from the buyer to Chris and there is nothing to explain.</p>
+    <div class="rulebox go">
+      <h3>The clean version, in one sentence</h3>
+      <p>Buyers pay into an account in Chris's name, one named person keeps the ticket list, and anyone who asks can see both.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-no">Step one</div>
+    <h2>Set up the account, 20 minutes at the bank</h2>
+    <p>Chris almost certainly does not want raffle money mixed into his everyday spending. Nearly every Australian bank lets you open a second savings account under the same login, free, in a few minutes on the app.</p>
+    <ol class="steps">
+      <li><div><strong>Open a second savings account in Chris's name</strong><span>Same bank, same login. Call it something obvious like "Wheels for Chris". It is his account, in his name, and he controls it.</span></div></li>
+      <li><div><strong>Set up a PayID on that account</strong><span>Use his mobile number or an email address. PayID means people can pay by typing one thing instead of a BSB and an account number, and it works from any Australian bank app instantly.</span></div></li>
+      <li><div><strong>Write the details down once</strong><span>Account name, BSB, account number, PayID. These go on the website and on the printed tickets.</span></div></li>
+      <li><div><strong>Turn on notifications</strong><span>So Chris and whoever is keeping the ticket list both see money the second it lands.</span></div></li>
+    </ol>
+    <div class="rulebox sun">
+      <p style="margin-bottom:0;"><strong>Is it safe to publish a BSB and account number?</strong> Yes. Account details only let people put money in, not take it out. Every charity and footy club in the country prints them. Do not publish anything else: no card numbers, no photo of a card, no ID documents.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-no">Step two</div>
+    <h2>Pick how people pay</h2>
+    <p>Start with the free one. Add card payments later if the raffle takes off.</p>
+
+    <div class="option best">
+      <div class="opt-head"><h3>Bank transfer and PayID</h3><span class="tag">Start here</span></div>
+      <p>People pay straight into Chris's account from their own banking app. No signup, no account to open, no approval to wait for. It works today.</p>
+      <dl class="facts">
+        <dt>Fees</dt><dd>Nothing. Every dollar lands.</dd>
+        <dt>Setup</dt><dd>Done in step one.</dd>
+        <dt>Money lands</dt><dd>Usually within seconds with PayID.</dd>
+        <dt>The catch</dt><dd>Somebody has to match payments to names by hand and send the ticket numbers back. For a few hundred tickets that is a job for one person and a spreadsheet.</dd>
+      </dl>
+    </div>
+
+    <div class="option">
+      <div class="opt-head"><h3>An Australian raffle platform</h3><span class="tag later">Worth a look</span></div>
+      <p>Sites like RaffleLink and Raffletix are built for exactly this. They take the card payment, issue ticket numbers automatically, email the buyer, and run the draw for you. Money settles into a nominated bank account, which would be Chris's.</p>
+      <dl class="facts">
+        <dt>Fees</dt><dd>A cut of each ticket plus card fees. Check the current rate on their site.</dd>
+        <dt>Setup</dt><dd>An application, and they will ask who is running the raffle and about your Tasmanian permit or exemption.</dd>
+        <dt>Check first</dt><dd>Some platforms only take registered charities or incorporated clubs, not individuals. Ask them straight out before building anything around it. If they say no to an individual, running it under a local club that says yes is the usual fix.</dd>
+      </dl>
+    </div>
+
+    <div class="option">
+      <div class="opt-head"><h3>Stripe or Square payment links</h3><span class="tag later">Read the rules first</span></div>
+      <p>Both let you make a payment link with no website work, and both settle into a nominated bank account. But both list lotteries and raffles as restricted businesses, so an account can be shut down after the money is taken if you have not cleared it with them.</p>
+      <dl class="facts">
+        <dt>Fees</dt><dd>Roughly 1.7% plus 30c per transaction for Australian cards. Confirm current rates before quoting them to anybody.</dd>
+        <dt>Setup</dt><dd>Chris's ID and his bank details. His hands only, nobody else's.</dd>
+        <dt>Check first</dt><dd>Ask their support in writing whether a permitted charity raffle is allowed on the account, and keep the answer.</dd>
+      </dl>
+    </div>
+
+    <div class="option">
+      <div class="opt-head"><h3>GoFundMe</h3><span class="tag no">Not for this</span></div>
+      <p>Chris already has one and it worked. But a GoFundMe is a donation, and a raffle sells a chance to win something. Do not run raffle ticket sales through a donation page. If somebody wants to give money without buying a ticket, point them at the GoFundMe and keep the two separate.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-no">Step three</div>
+    <h2>Keep the list, because a raffle is a promise</h2>
+    <p>Once someone pays, they own a numbered chance in a draw. That means somebody has to be able to prove which numbers are theirs. One spreadsheet does it.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>What goes in it</th></tr></thead>
+        <tbody>
+          <tr><td>Date paid</td><td>The date it landed in the account</td></tr>
+          <tr><td>Name</td><td>Whatever came through on the transfer</td></tr>
+          <tr><td>Contact</td><td>Mobile or email, so you can send numbers and ring a winner</td></tr>
+          <tr><td>Amount</td><td>What they paid</td></tr>
+          <tr><td>Ticket numbers</td><td>Issued in order, never reused. <code>0041 to 0043</code></td></tr>
+          <tr><td>Sent?</td><td>Ticked once their numbers have gone back to them</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rulebox sun">
+      <p><strong>Two habits that save the whole thing.</strong></p>
+      <ul class="plain" style="margin-bottom:0;">
+        <li>Issue numbers in strict order and never skip. The last number issued is also your ticket count for the odds you publish on draw day.</li>
+        <li>Reconcile the spreadsheet against the bank account once a week. If the totals do not match, find out why that week, not on draw day.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-no">Step four</div>
+    <h2>Put the details on the website</h2>
+    <p>The site has one CONFIG block at the top. Fill in these lines and everything else updates itself.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Line</th><th>What to put in it</th></tr></thead>
+        <tbody>
+          <tr><td><code>payName</code></td><td>The account name exactly as the bank shows it</td></tr>
+          <tr><td><code>payBsb</code></td><td>The BSB</td></tr>
+          <tr><td><code>payAcct</code></td><td>The account number</td></tr>
+          <tr><td><code>payId</code></td><td>The PayID, if you set one up</td></tr>
+          <tr><td><code>checkoutUrl</code></td><td>Leave empty until a card option is live. While it is empty the buy buttons take people to the bank transfer details instead of a dead link.</td></tr>
+          <tr><td><code>raised</code> and <code>ticketsSold</code></td><td>Update from the spreadsheet whenever you like. The progress bar and the counter follow.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Ask Thomas to update these and republish. It takes about a minute.</p>
+  </section>
+
+  <section>
+    <div class="section-no">Keep it clean</div>
+    <h2>The three things that keep this above board</h2>
+    <div class="rulebox go">
+      <ul class="plain" style="margin-bottom:0;">
+        <li><strong>The permit comes first.</strong> Before tickets go on public sale, get the answer from Consumer, Building and Occupational Services in Tasmania on whether this needs a minor gaming permit. Write down who you spoke to and when.</li>
+        <li><strong>Support workers help as mates, not on shift.</strong> Nobody should be claiming NDIS-funded support hours for time spent selling raffle tickets. Same job, wrong money, and it is the thing an auditor would pick up.</li>
+        <li><strong>Every dollar traceable to Chris.</strong> One account in his name, one spreadsheet, published totals. If anyone ever asks where the money went, the answer is a screenshot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Wheels for Chris</strong> &middot; Ulverstone, Tasmania. Run by Chris with his support workers and mates.</p>
+    <p>Companion documents: the website, the organiser's runbook, and Bridie's design kit. This page covers the money only.</p>
+    <p>Nothing here is financial or legal advice. Fees and platform rules change, so check them on the day you set it up rather than taking these numbers as gospel.</p>
+  </footer>
+</div>
+</body>
+</html>

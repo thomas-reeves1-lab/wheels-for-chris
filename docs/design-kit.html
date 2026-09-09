@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bridie's Design Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ink: #1b2a2f; --ink-soft: #435357; --paper: #f5f1e6; --paper-raised: #fffdf8;
+    --line: #d8cfb8; --gold: #b5811f; --gold-soft: #ecd9a8; --teal: #2f6f6a;
+    --teal-soft: #dcebe9; --stamp: #a5432a; --stamp-soft: #f3ddd3;
+    --shadow: 0 1px 0 rgba(27,42,47,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #ece6d6; --ink-soft: #b7ae98; --paper: #1c211f; --paper-raised: #242a27;
+      --line: #3a4340; --gold: #e0b756; --gold-soft: #3a331d; --teal: #7fc4bd;
+      --teal-soft: #1f3634; --stamp: #e08767; --stamp-soft: #3a2620;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #ece6d6; --ink-soft: #b7ae98; --paper: #1c211f; --paper-raised: #242a27;
+    --line: #3a4340; --gold: #e0b756; --gold-soft: #3a331d; --teal: #7fc4bd;
+    --teal-soft: #1f3634; --stamp: #e08767; --stamp-soft: #3a2620;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Work Sans', -apple-system, sans-serif; line-height: 1.55; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(30px, 5.5vw, 44px); font-weight: 700; margin: 6px 0 8px; text-wrap: balance; line-height: 1.08; }
+  .tagline { font-size: 16px; color: var(--ink-soft); max-width: 52ch; }
+  .perf { border: none; border-top: 2px dashed var(--line); margin: 36px 0 30px; }
+  .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  .section-no { font-family: 'IBM Plex Mono', monospace; color: var(--gold); font-weight: 600; font-size: 14px; }
+  h2 { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 600; margin: 0; }
+  p { margin: 0 0 12px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 16px 0; }
+  .swatch { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper-raised); }
+  .swatch .chip { height: 54px; }
+  .swatch .meta { padding: 8px 10px; }
+  .swatch .name { font-weight: 600; font-size: 13.5px; }
+  .swatch .hex { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); }
+  .type-sample { border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; margin: 10px 0; background: var(--paper-raised); }
+  .type-sample .role { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .fraunces { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 700; }
+  .plexmono { font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; }
+  .worksans { font-family: 'Work Sans', sans-serif; font-size: 16px; }
+  .asset { border: 1px solid var(--line); background: var(--paper-raised); border-radius: 8px; padding: 16px 18px; margin: 12px 0; }
+  .asset .tag { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 6px; }
+  .asset .size { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; }
+  .copy-block { background: var(--teal-soft); border-left: 3px solid var(--teal); border-radius: 4px; padding: 12px 16px; margin-top: 8px; font-size: 14.5px; white-space: pre-line; }
+  footer { margin-top: 44px; padding-top: 18px; border-top: 2px dashed var(--line); font-size: 13px; color: var(--ink-soft); text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Wheels for Chris &middot; Design brief</span>
+  <h1>Bridie's Design Kit</h1>
+  <p class="tagline">Five assets, one consistent look, reused everywhere. Get the ticket right first &mdash; it's the whole campaign's visual identity in miniature, and everything else follows from it.</p>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">01</span><h2>Palette</h2></div>
+    <p>Think old raffle-ticket-book colours: cream paper, teal ink, a gold number, a red stamp for the date. Warm and local, like a shop counter &mdash; not bright party-balloon colours.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#1B2A2F"></div><div class="meta"><div class="name">Ink</div><div class="hex">#1B2A2F</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F5F1E6"></div><div class="meta"><div class="name">Paper</div><div class="hex">#F5F1E6</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#2F6F6A"></div><div class="meta"><div class="name">Teal</div><div class="hex">#2F6F6A</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#B5811F"></div><div class="meta"><div class="name">Gold</div><div class="hex">#B5811F</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#A5432A"></div><div class="meta"><div class="name">Stamp red</div><div class="hex">#A5432A</div></div></div>
+    </div>
+    <p class="tagline">Stamp red is for urgency only &mdash; draw date, countdown, "TODAY". Don't spread it everywhere.</p>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">02</span><h2>Type</h2></div>
+    <div class="type-sample"><div class="role">Headlines</div><div class="fraunces">Fraunces &mdash; names, prize amounts</div></div>
+    <div class="type-sample"><div class="role">Numbers / stubs / prices</div><div class="plexmono">IBM Plex Mono &mdash; $10, No. 001</div></div>
+    <div class="type-sample"><div class="role">Body copy</div><div class="worksans">Work Sans &mdash; easy to read on a phone</div></div>
+    <p class="tagline">All three are free on Google Fonts &mdash; search each by name in Canva's font picker.</p>
+  </section>
+
+  <hr class="perf">
+  <section>
+    <div class="section-head"><span class="section-no">03</span><h2>Asset 1 &mdash; The ticket</h2></div>
+    <div class="asset">
+      <span class="tag">Ticket</span>
+      <div class="size">Roughly business-card / A6, two-up or four-up on A4 and cut.</div>
+      <p>Must include: ticket number, "Wheels for Chris", price, draw date, one line on the prize, and a note that odds will be posted on draw day.</p>
+      <div class="copy-block">WHEELS FOR CHRIS
+Ticket No. ___
+$10 single &middot; 3 for $25 &middot; 6 for $45
+Drawn [date] at [event]
+4 prize packs &middot; ~$1,000 in local gift cards
+Odds posted morning of the draw</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-no">04</span><h2>Asset 2 &mdash; Hero launch post</h2></div>
+    <div class="asset">
+      <span class="tag">Hero post</span>
+      <div class="size">1080&times;1080 feed, 1080&times;1920 Story crop.</div>
+      <p>Must include: one strong photo of Chris (with his OK), his story in under 40 words, the ask, ticket price, where to buy.</p>
+      <div class="copy-block">Chris has cerebral palsy. NDIS doesn't fund vehicles, and he has no AT funding for one either.
+A van means getting around Ulverstone on his own terms.
+$10 a ticket. 4 local prize packs worth ~$1,000. Drawn [date].
+Grab a ticket at [businesses] or link in bio.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-no">05</span><h2>Asset 3 &mdash; Prize board</h2></div>
+    <div class="asset">
+      <span class="tag">Prize board</span>
+      <div class="size">1080&times;1350, tall feed post.</div>
+      <p>All four packs laid out like a scoreboard, with real photos of the actual gift cards once assembled (see the organiser's runbook, Step 3).</p>
+      <div class="copy-block">1ST &mdash; THE BIG ONE &mdash; ~$400
+2ND &mdash; ULVERSTONE LOCAL PACK &mdash; ~$300
+3RD &mdash; NIGHT OUT PACK &mdash; ~$200
+EARLY BIRD &mdash; ~$100 (drawn [date], before the main draw)</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-no">06</span><h2>Asset 4 &mdash; Countdown template</h2></div>
+    <div class="asset">
+      <span class="tag">Countdown</span>
+      <div class="size">1080&times;1920 Story.</div>
+      <p>Build it once with one swappable number field &mdash; "12 DAYS TO THE DRAW", "5 DAYS", "TODAY" &mdash; so reposting is a five-minute edit, not a new design each time. Use the stamp red for the number.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-no">07</span><h2>Asset 5 &mdash; Winner card</h2></div>
+    <div class="asset">
+      <span class="tag">Winner card</span>
+      <div class="size">1080&times;1080, one template, four uses.</div>
+      <p>The early bird winner, then each of the three main draw winners. Same frame every time so the campaign reads as one thread from open to close.</p>
+      <div class="copy-block">CONGRATULATIONS [NAME]!
+Winner of [pack name]
+Thanks to everyone who bought a ticket &mdash; $[total] raised for Chris's van.</div>
+    </div>
+  </section>
+
+  <footer>Companion document: Run It &amp; Call &mdash; the organiser's runbook, including the call to make before any tickets go on sale.</footer>
+</div>
+</body>
+</html>
