@@ -11,7 +11,7 @@ accessible van for Chris. Run by Chris with his support workers and mates.
 |---|---|
 | `index.html` | The public raffle site. One page, mobile first. |
 | `docs/money-setup.html` | How to take the money so it lands in Chris's own bank account. |
-| `docs/runbook.html` | The organiser's runbook, including the permit call to make first. |
+| `docs/runbook.html` | The organiser's runbook: who runs it, prizes, tickets, the four week plan. |
 | `docs/design-kit.html` | Palette, fonts and the Canva asset briefs. |
 
 ## How to change the site
@@ -29,8 +29,14 @@ Change a value, commit, push. The live site updates in about a minute.
 | `drawDate`, `drawDateLabel` | Draw day. The countdown reads `drawDate`. |
 | `photoUrl` | Chris's photo, embedded as a data URI. |
 
-## Before tickets go on public sale
+## Permit
 
-Get the answer from Consumer, Building and Occupational Services in Tasmania
-on whether this needs a minor gaming permit. Write down who you spoke to and
-when. The runbook has the questions to ask.
+Checked 21 September 2026: this raffle does not need a minor gaming permit.
+It still runs under Tasmania's minor gaming rules, so draw it publicly with a
+witness, publish the ticket count before the draw, and keep the ticket list.
+
+## Still to wire up
+
+Chris's bank details, so the buy buttons do something. Until `payBsb` and
+`payAcct` are filled in, the buttons send people to the bank transfer section
+rather than a dead link.
